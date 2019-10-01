@@ -3,6 +3,16 @@
 	"EngineAssociation": "4.22",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "UE4_VRPlayground",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
 	"TargetPlatforms": [
 		"PS4",
 		"WindowsNoEditor"
