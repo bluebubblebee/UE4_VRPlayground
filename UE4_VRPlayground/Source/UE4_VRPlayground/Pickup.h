@@ -3,11 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "PickupInterface.h"
+
 #include "GameFramework/Actor.h"
 #include "Pickup.generated.h"
 
 UCLASS()
-class UE4_VRPLAYGROUND_API APickup : public AActor
+class UE4_VRPLAYGROUND_API APickup : public AActor, public IPickupInterface
 {
 	GENERATED_BODY()
 	
@@ -44,12 +47,26 @@ public:
 	// Sets default values for this actor's properties
 	APickup();
 
+	virtual void Tick(float DeltaTime) override;
+
 protected:
-	// Called when the game starts or when spawned
+
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+
+	/// PICKUP INTERFACE /////
+	// This will be called by the motion controller when an object Pickup has been found
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Pickup Interface")
+	void Pickup(class UMotionControllerComponent *MotionController);
+
+	virtual void Pickup_Implementation(class UMotionControllerComponent *MotionController) override;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Pickup Interface")
+	void Drop(class UMotionControllerComponent *MotionController);
+
+	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
+
+	/// PICKUP INTERFACE /////
 
 };

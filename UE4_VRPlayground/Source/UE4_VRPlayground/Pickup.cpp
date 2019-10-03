@@ -2,6 +2,7 @@
 
 
 #include "Pickup.h"
+#include "MotionControllerComponent.h"
 #include "Components/BoxComponent.h"
 
 APickup::APickup()
@@ -50,4 +51,18 @@ void APickup::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+/// PICKUP INTERFACE /////
+void APickup::Pickup_Implementation(UMotionControllerComponent *MotionController)
+{
+	
+}
+
+
+void APickup::Drop_Implementation(UMotionControllerComponent *MotionController)
+{
+
+}
+
+/// PICKUP INTERFACE /////
 

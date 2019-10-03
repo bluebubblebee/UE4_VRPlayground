@@ -14,5 +14,5 @@ ARope::ARope()
 	CableComponent->SetupAttachment(Root);
 
 	ConstraintComponent = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("ConstraintComponent"));
-	ConstraintComponent->SetupAttachment(Root);
+	ConstraintComponent->SetupAttachment(Root); 
 }
