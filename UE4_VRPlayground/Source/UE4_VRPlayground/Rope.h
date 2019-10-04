@@ -18,6 +18,18 @@ public:
 
 	ARope();
 
+	virtual void Tick(float DeltaTime) override;
+
+protected:
+
+	virtual void BeginPlay() override;
+
+public:
+
+	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
+
+	virtual void Pickup_Implementation(class UMotionControllerComponent *MotionController) override;
+
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Cable")
@@ -26,5 +38,31 @@ protected:
 	// Component that allow to do elements type cable
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Cable")
 	class UCableComponent* CableComponent;
+
+protected:
+
+
+	// Extra cable lenght needed to detect that the cable has been pulled
+	UPROPERTY(EditDefaultsOnly, Category = "Cable")
+	float MinPullLength = 25.0f;
+
+	UFUNCTION(BlueprintCallable, Category = "Cable")
+	float GetCableLength();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cable")
+	bool bIsPulling;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Cable")
+	TSubclassOf<APickup> PickupToSpawnClass;
+
+private:
+
+	float InitialCableLength;
+
+	bool bWaitToEndPulling = false;
+
+	float waitTimeToEndPulling;
+
+	
 	
 };

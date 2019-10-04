@@ -77,4 +77,6 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Pickup")
 	class UMotionControllerComponent *CurrentMotionController;
 
+	
+
 };
