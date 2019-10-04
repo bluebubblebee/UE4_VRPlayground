@@ -55,13 +55,13 @@ void APickup::Tick(float DeltaTime)
 /// PICKUP INTERFACE /////
 void APickup::Pickup_Implementation(UMotionControllerComponent *MotionController)
 {
-	
+	UE_LOG(LogTemp, Warning, TEXT("APickup::Pickup_Implementation Called"));
 }
 
 
 void APickup::Drop_Implementation(UMotionControllerComponent *MotionController)
-{
-
+{ 
+	UE_LOG(LogTemp, Warning, TEXT("APickup::Drop_Implementation Called"));
 }
 
 /// PICKUP INTERFACE /////
