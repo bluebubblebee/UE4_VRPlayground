@@ -33,16 +33,16 @@ APickup::APickup()
 	RepelForceBase = 500000;
 	RepelForceVariation = 200000;
 
-	PrimaryActorTick.bCanEverTick = true;
+	bUsing = false;
 
+	PrimaryActorTick.bCanEverTick = true;
 }
 
 void APickup::BeginPlay()
 {
 	Super::BeginPlay();
 
-	bSimulatingPhysics = Base->IsSimulatingPhysics();
-	
+	bSimulatingPhysics = Base->IsSimulatingPhysics();	
 }
 
 
@@ -56,12 +56,33 @@ void APickup::Tick(float DeltaTime)
 void APickup::Pickup_Implementation(UMotionControllerComponent *MotionController)
 {
 	UE_LOG(LogTemp, Warning, TEXT("APickup::Pickup_Implementation Called"));
+
+	if (!bUsing)
+	{
+		bUsing = true;
+		// Helds a reference to the current motion controller
+		CurrentMotionController = MotionController;
+
+		// Attach to the Base Component
+		Base->SetSimulatePhysics(false);
+		Base->AttachToComponent(MotionController, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
+	}
 }
 
 
 void APickup::Drop_Implementation(UMotionControllerComponent *MotionController)
 { 
 	UE_LOG(LogTemp, Warning, TEXT("APickup::Drop_Implementation Called"));
+
+	if (MotionController == nullptr || MotionController == CurrentMotionController)
+	{
+		bUsing = false;
+		// Detach to the Base Component
+		Base->SetSimulatePhysics(bSimulatingPhysics);
+		CurrentMotionController = nullptr;
+
+		Base->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+	}
 }
 
 /// PICKUP INTERFACE /////

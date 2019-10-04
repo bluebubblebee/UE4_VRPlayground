@@ -32,6 +32,9 @@ protected:
 
 protected:
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Pickup")
+	bool bUsing;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup")
 	float RepelForceBase;
 
@@ -68,5 +71,10 @@ public:
 	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
 
 	/// PICKUP INTERFACE /////
+
+protected:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Pickup")
+	class UMotionControllerComponent *CurrentMotionController;
 
 };
