@@ -46,14 +46,22 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Cable")
 	float MinPullLength = 25.0f;
 
-	UFUNCTION(BlueprintCallable, Category = "Cable")
-	float GetCableLength();
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cable")
 	bool bIsPulling;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Cable")
 	TSubclassOf<APickup> PickupToSpawnClass;
+
+	// Gets the length of the cable
+	UFUNCTION(BlueprintCallable, Category = "Cable")
+	float GetCableLength();
+
+	// This function is called when the rope detects that is being pulled.
+	// It can be called from blueprint, so we can add extra effects
+	UFUNCTION(BlueprintImplementableEvent, Category = "Cable")
+	void OnPull();
 
 private:
 

@@ -35,14 +35,14 @@ void ARope::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 
-	if (bWaitToEndPulling)
+	/*if (bWaitToEndPulling)
 	{
 		waitTimeToEndPulling += DeltaTime;
 
 		// Wait to seconds to drop and spawn something
 		if (waitTimeToEndPulling >= 0.3f)
 		{
-			bWaitToEndPulling = false;
+			bWaitToEndPulling = false; 
 			waitTimeToEndPulling = 0.0f;
 
 			UE_LOG(LogTemp, Warning, TEXT("OnEndPulling.ForceDrop %f "), waitTimeToEndPulling);
@@ -60,7 +60,7 @@ void ARope::Tick(float DeltaTime)
 
 
 		}
-	}
+	}*/
 
 
 	if (!bUsing) return;
@@ -79,8 +79,11 @@ void ARope::Tick(float DeltaTime)
 			bIsPulling = true;
 
 			// Delay release the cable
-			bWaitToEndPulling = true;
-			waitTimeToEndPulling = 0.0f;
+			//bWaitToEndPulling = true;
+			//waitTimeToEndPulling = 0.0f;
+
+			// Call the event
+			OnPull();
 
 			Drop(CurrentMotionController);			
 		}
