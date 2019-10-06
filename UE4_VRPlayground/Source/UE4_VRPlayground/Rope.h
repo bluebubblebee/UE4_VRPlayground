@@ -41,12 +41,9 @@ protected:
 
 protected:
 
-
 	// Extra cable lenght needed to detect that the cable has been pulled
 	UPROPERTY(EditDefaultsOnly, Category = "Cable")
-	float MinPullLength = 25.0f;
-
-	
+	float MinPullLength = 25.0f;	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cable")
 	bool bIsPulling;
@@ -58,8 +55,7 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Cable")
 	float GetCableLength();
 
-	// This function is called when the rope detects that is being pulled.
-	// It can be called from blueprint, so we can add extra effects
+	// BlueprintImplementableEvent called by C++, received by a Blueprint and allow to override
 	UFUNCTION(BlueprintImplementableEvent, Category = "Cable")
 	void OnPull();
 
@@ -67,10 +63,5 @@ private:
 
 	float InitialCableLength;
 
-	bool bWaitToEndPulling = false;
-
-	float waitTimeToEndPulling;
-
-	
 	
 };

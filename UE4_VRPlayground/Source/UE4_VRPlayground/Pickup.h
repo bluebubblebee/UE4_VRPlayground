@@ -69,7 +69,6 @@ public:
 	void Drop(class UMotionControllerComponent *MotionController);
 
 	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
-
 	/// PICKUP INTERFACE /////
 
 protected:

@@ -16,7 +16,6 @@ APickup::APickup()
 	Base = CreateDefaultSubobject<UBoxComponent>(TEXT("Base"));
 	Base->SetSimulatePhysics(true);
 	Base->SetBoxExtent(FVector(1, 1, 1));
-	Base->SetCollisionProfileName(FName("NoCollision"));
 	Base->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
 	Base->SetupAttachment(Root);
 
@@ -55,7 +54,6 @@ void APickup::Tick(float DeltaTime)
 /// PICKUP INTERFACE /////
 void APickup::Pickup_Implementation(UMotionControllerComponent *MotionController)
 {
-	UE_LOG(LogTemp, Warning, TEXT("APickup::Pickup_Implementation Called"));
 
 	if (!bUsing)
 	{
@@ -72,7 +70,6 @@ void APickup::Pickup_Implementation(UMotionControllerComponent *MotionController
 
 void APickup::Drop_Implementation(UMotionControllerComponent *MotionController)
 { 
-	UE_LOG(LogTemp, Warning, TEXT("APickup::Drop_Implementation Called"));
 
 	if (MotionController == nullptr || MotionController == CurrentMotionController)
 	{
