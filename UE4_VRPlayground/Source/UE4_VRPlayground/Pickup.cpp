@@ -24,14 +24,6 @@ APickup::APickup()
 	InteractiveCollider->SetupAttachment(Base);
 	InteractiveCollider->SetCollisionProfileName(FName("Interactive"));
 
-	PickSnapLocator = CreateDefaultSubobject<USceneComponent>(TEXT("PickSnapLocator"));
-	PickSnapLocator->SetupAttachment(Base);
-
-
-	// Forces
-	RepelForceBase = 500000;
-	RepelForceVariation = 200000;
-
 	bUsing = false;
 
 	PrimaryActorTick.bCanEverTick = true;
@@ -48,7 +40,6 @@ void APickup::BeginPlay()
 void APickup::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 /// PICKUP INTERFACE /////

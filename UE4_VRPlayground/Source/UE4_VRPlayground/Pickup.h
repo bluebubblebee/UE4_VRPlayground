@@ -25,22 +25,11 @@ protected:
 	// Collider for the object
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Pickup")
 	UBoxComponent* InteractiveCollider;
-	
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Pickup")
-	USceneComponent* PickSnapLocator;
 
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Pickup")
 	bool bUsing;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup")
-	float RepelForceBase;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup")
-	float RepelForceVariation;
-
 
 private:
 
@@ -75,7 +64,4 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Pickup")
 	class UMotionControllerComponent *CurrentMotionController;
-
-	
-
 };
