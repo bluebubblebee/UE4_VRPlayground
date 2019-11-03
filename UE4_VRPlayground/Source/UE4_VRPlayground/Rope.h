@@ -24,12 +24,6 @@ protected:
 
 	virtual void BeginPlay() override;
 
-public:
-
-	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
-
-	virtual void Pickup_Implementation(class UMotionControllerComponent *MotionController) override;
-
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Cable")
@@ -48,9 +42,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cable")
 	bool bIsPulling;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Cable")
-	TSubclassOf<APickup> PickupToSpawnClass;
-
 	// Gets the length of the cable
 	UFUNCTION(BlueprintCallable, Category = "Cable")
 	float GetCableLength();
@@ -59,9 +50,19 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Cable")
 	void OnPull();
 
+
+	UPROPERTY(EditDefaultsOnly, Category = "Cable")
+	TSubclassOf<APickup> PickupToSpawnClass;
+
+
+public:
+
+	virtual void Drop_Implementation(class UMotionControllerComponent *MotionController) override;
+
+	virtual void Pickup_Implementation(class UMotionControllerComponent *MotionController) override;
+
+
 private:
 
-	float InitialCableLength;
-
-	
+	float InitialCableLength;	
 };

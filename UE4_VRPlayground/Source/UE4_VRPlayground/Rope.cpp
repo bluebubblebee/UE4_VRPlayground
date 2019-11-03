@@ -39,7 +39,6 @@ void ARope::Tick(float DeltaTime)
 	{
 		if (CurrentCableLength >= MinPullLength)
 		{
-
 			bIsPulling = true;
 
 			// Call the event
